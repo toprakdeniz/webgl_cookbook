@@ -1,0 +1,25 @@
+{
+  "name": "webgl_prots",
+  "version": "0.1",
+  "description": "playground for webgl ",
+  "main": "index.js",
+  "license": "MIT",
+
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^4.4.5"
+  },
+  
+  "dependencies": {
+    "@apache-arrow/es5-esm": "^13.0.0",
+    "@pirireis/webglobe": "5.0.12",
+    "breathejs": "^0.2.1",
+    "moment": "^2.29.4"
+  }
+}
+
+

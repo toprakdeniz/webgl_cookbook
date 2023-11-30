@@ -1,0 +1,431 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+			body {
+				background-color: black;
+			}
+			
+			canvas {
+				display: block;
+				margin: auto;
+				border: solid 1px white;
+				border-radius: 10px;
+			}
+			
+			img {
+				display: none;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<canvas id="canvas"></canvas>
+		<script type="application/javascript">
+		
+		// I've only placed this here to get around cors < _ >
+		var images = function() {
+			
+			"use strict";
+			
+			function Image(width,height,pixels) {
+				this.width = width;
+				this.height = height;
+				this.pixels = pixels;
+			}
+			
+			return {
+				background: new Image(16,16,new Uint8Array([127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,95,95,95,255,95,95,95,255,127,127,127,255,127,127,127,255,127,127,127,255,95,95,95,255,127,127,127,255,127,127,127,255,95,95,95,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,95,95,95,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,95,95,95,255,127,127,127,255,127,127,127,255,95,95,95,255,127,127,127,255,127,127,127,255,127,127,127,255,127,127,127,255,95,95,95,255,95,95,95,255,95,95,95,255,153,217,234,255,95,95,95,255,127,127,127,255,127,127,127,255,95,95,95,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,95,95,95,255,95,95,95,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,22,116,50,255,22,116,50,255,22,116,50,255,22,116,50,255,22,116,50,255,22,116,50,255,22,116,50,255,22,116,50,255,153,217,234,255,153,217,234,255,153,217,234,255,153,217,234,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255,34,177,76,255])),
+				raindrop: new Image(8,8,new Uint8Array([0,0,0,0,0,0,0,0,0,0,0,0,41,49,151,255,41,49,151,255,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,41,49,151,255,64,73,202,255,64,73,202,255,41,49,151,255,0,0,0,0,0,0,0,0,0,0,0,0,41,49,151,255,64,73,202,255,64,73,202,255,64,73,202,255,64,73,202,255,41,49,151,255,0,0,0,0,0,0,0,0,41,49,151,255,64,73,202,255,64,73,202,255,64,73,202,255,64,73,202,255,41,49,151,255,0,0,0,0,41,49,151,255,64,73,202,255,64,73,202,255,64,73,202,255,64,73,202,255,64,73,202,255,64,73,202,255,41,49,151,255,41,49,151,255,64,73,202,255,64,73,202,255,64,73,202,255,64,73,202,255,64,73,202,255,64,73,202,255,41,49,151,255,0,0,0,0,41,49,151,255,64,73,202,255,64,73,202,255,64,73,202,255,64,73,202,255,41,49,151,255,0,0,0,0,0,0,0,0,0,0,0,0,41,49,151,255,41,49,151,255,41,49,151,255,41,49,151,255,0,0,0,0,0,0,0,0]))
+			};
+			
+		}();
+		
+		void function() {
+			
+			"use strict";
+			
+			// Variables
+			var canvasWidth = 180;
+			var canvasHeight = 160;
+			var canvas = null;
+			var gl = null;
+			var raindrops = [];
+			
+			// WebGL programs (contains code that modifies your vertex data & code that processes each pixel)
+			var backgroundProgram = null;
+			var raindropProgram = null;
+			
+			// WebGL program attributes (indexes into attributes inside the program, webgl uses these to interpret data in the buffers)
+			var aPositionLocation = 0;
+			var aUVLocation = 1;
+			
+			// WebGL program uniforms (It's a variable that's shared between Javascript and the program, you just need to call a function to update it's value)
+			var uRaindropPosition = null; // vec2
+			var uRaindropSize = null; // vec2
+			
+			// WebGL buffers (It's like an array '[]', but it's on the GPU, we'll use it here to specify the properties of triangles we want to draw)
+			var backgroundBuffer = null;
+			
+			// WebGL textures
+			var backgroundTexture = null;
+			var raindropTexture = null;
+			
+			// Constructors
+			// If this function is called with 'new Raindrop(0,0,10);' it'll create a new raindrop object that has these properties
+			function Raindrop(x,y,size) {
+				this.x = x;
+				this.y = y;
+				this.size = size;
+			}
+			
+			// Functions
+			function createProgram(vertexCode,fragmentCode) {
+				var program = gl.createProgram();
+				var vertexShader = gl.createShader(gl.VERTEX_SHADER);
+				var fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
+				
+				// Upload source code
+				gl.shaderSource(vertexShader,vertexCode);
+				gl.shaderSource(fragmentShader,fragmentCode);
+				
+				// Compile shaders
+				gl.compileShader(vertexShader);
+				gl.compileShader(fragmentShader);
+				
+				// Check there isn't any problems
+				try {
+					if (!gl.getShaderParameter(vertexShader,gl.COMPILE_STATUS)) {
+						throw "Vertex Shader: " + gl.getShaderInfoLog(vertexShader);
+					}
+					
+					if (!gl.getShaderParameter(fragmentShader,gl.COMPILE_STATUS)) {
+						throw "Fragment Shader: " + gl.getShaderInfoLog(fragmentShader);
+					}
+				} catch(log) {
+					gl.deleteProgram(program);
+					gl.deleteShader(vertexShader);
+					gl.deleteShader(vertexShader);
+					console.error(log);
+				}
+				
+				// Attach to the main program
+				gl.attachShader(program,vertexShader);
+				gl.attachShader(program,fragmentShader);
+				gl.linkProgram(program);
+				gl.deleteShader(vertexShader);
+				gl.deleteShader(fragmentShader);
+				
+				return program;
+			}
+			
+			function createBuffer(data) {
+				// Create a GPU buffer, it's a really simple object
+				// Buffers can be best thought of as a normal array that sits in GPU memory (VRAM)
+				var buffer = gl.createBuffer();
+				
+				// attach our new buffer on the gpu to 'ARRAY_BUFFER'
+				// Think of it as, whatever is attached to 'ARRAY_BUFFER' is the current buffer that get used with WebGl functions
+				gl.bindBuffer(gl.ARRAY_BUFFER,buffer);
+				
+				// Upload our array of verticies as 32 bit floats
+				gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(data),gl.STATIC_DRAW);
+				
+				// Tell WebGL we're not using the buffer anymore at the moment
+				gl.bindBuffer(gl.ARRAY_BUFFER,null);
+				
+				return buffer;
+			}
+			
+			function createTexture(image) {
+				var texture = gl.createTexture();
+				
+				// attach our new texture on the gpu to 'TEXTURE_2D'
+				// Think of it as, whatever is attached is our current texture we're using for webgl functions
+				gl.bindTexture(gl.TEXTURE_2D,texture);
+				
+				// Set texture parameters, i.e. how are we going to scale it up or down/ what should happen if we
+				// try to get a pixel from outside the texture
+				gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.NEAREST); // Use nearest neighbour when sizing up
+				gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.NEAREST); // Use nearest neighbour when sizing down
+				gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.REPEAT); // Apply a modulo to x coordinates if there outside the texture
+				gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.REPEAT); // Apply a modulo to y coordinates if there outside the texture
+				
+				// Upload our image to our gpu texture
+				gl.texImage2D(
+					gl.TEXTURE_2D, // I want it to get uploaded to what's attached to TEXTURE_2D
+					0, // Mipmap level, it can stay at 0
+					gl.RGBA, // Data format the gpu texture will use, in this case 8 bit RGBA for each pixel
+					image.width,
+					image.height,
+					0, // Border, always should be zero
+					gl.RGBA, // The data format of the image we're uploading to the gpu
+					gl.UNSIGNED_BYTE, // Datatype of each actual colour channel, here it's going to be an unsigned 8 bit int that will go from 0-255
+					image.pixels // The image we finally want to upload!, any HTML image element will work just fine
+				);
+				
+				// Now we'll unbind the texture since we are done with it now
+				gl.bindTexture(gl.TEXTURE_2D,null); // Passing null tells WebGL that we're not currently 'using' any texture
+				
+				return texture;
+			}
+			
+			// Convert from Javascript canvas coordinate system to WebGL's normalized device coordinates
+			/*
+				The position 0,0 moves to the center of the screen.
+				The top left corner becomes -1,1
+				The bottom right corner becomes 1,-1
+				
+				Coordinates need to be converted before they can be passed to WebGL
+			*/
+			function convertXCoordinate(x) {
+				return (x / canvasWidth) * 2.0 - 1.0;
+			}
+			
+			function convertYCoordinate(y) {
+				return ((canvasHeight - y) / canvasHeight) * 2.0 - 1.0;
+			}
+			
+			function loop() {
+				// Update
+				
+				// Update raindrop positions
+				// Just to simulate rain 'falling'
+				for (var i = 0; i < raindrops.length; ++i) {
+					var raindrop = raindrops[i];
+					
+					raindrop.y += 2.5;
+                    raindrop.size = i + 2;
+					
+					if (raindrop.y > canvasHeight) {
+						raindrop.x = Math.random() * canvasWidth;
+						raindrop.y = 0;
+					}
+				}
+				
+				// Render
+				
+				// Clear the canvas
+				gl.clear(gl.COLOR_BUFFER_BIT);
+				
+				// Draw the background
+				gl.bindBuffer(gl.ARRAY_BUFFER,backgroundBuffer);
+				
+				// We use this function to tell WebGL how to interpret the data in the current buffer
+				gl.vertexAttribPointer(
+					aPositionLocation, // attribute index, usually just the order they were declared in the vertex shader
+					2, // Number of values in attribute, vec2 has two floats
+					gl.FLOAT, // The kind of data to be expected in the buffer
+					false, // Telling WebGL we don't want the data to get normalized to 0.0 -> 1.0
+					Float32Array.BYTES_PER_ELEMENT * 4, // This is the size of a complete vertex in bytes (2 vec2's so four floats)
+					Float32Array.BYTES_PER_ELEMENT * 0 // This is the 'offset', or the number of floats that come before this attribute in each vertex. aPosition comes first so it's zero
+				);
+				
+				gl.vertexAttribPointer(
+					aUVLocation,
+					2,
+					gl.FLOAT,
+					false,
+					Float32Array.BYTES_PER_ELEMENT * 4,
+					Float32Array.BYTES_PER_ELEMENT * 2 // aUV comes second, so it's offset is two floats
+				);
+				
+				// Tell WebGL we want to turn these attributes on for rendering
+				gl.enableVertexAttribArray(aPositionLocation);
+				gl.enableVertexAttribArray(aUVLocation);
+				
+				// Attach our background texture so the sampler2D can use it
+				gl.bindTexture(gl.TEXTURE_2D,backgroundTexture);
+				
+				// Attach our program we want to render with
+				gl.useProgram(backgroundProgram);
+				
+				// Tell WebGL to start rendering!
+				gl.drawArrays(
+					gl.TRIANGLES, // Takes groups of 3 verticies to draw one complete triangle
+					0, // Start at index 0 in our buffer
+					6 // Use six complete verticies (whole sets of attributes) to draw 2 triangles
+				);
+				
+				// We no longer need the background buffer, program or texture
+				gl.bindBuffer(gl.ARRAY_BUFFER,null);
+				gl.disableVertexAttribArray(aPositionLocation);
+				gl.disableVertexAttribArray(aUVLocation);
+				gl.bindTexture(gl.TEXTURE_2D,null);
+				gl.useProgram(null);
+				
+				// Draw raindrops
+				// Since we're going to pass coordinates through uniforms, this can be done without a buffer
+				
+				// Bind texture for sampler2D
+				gl.bindTexture(gl.TEXTURE_2D,raindropTexture);
+				
+				// After attaching a program, we can upload values to uniforms using the values we got before from getUniformLocation()
+				gl.useProgram(raindropProgram);
+				
+				for (var i = 0; i < raindrops.length; ++i) {
+					var raindrop = raindrops[i];
+					
+					// Upload position
+					gl.uniform2f(
+						uRaindropPosition,
+						convertXCoordinate(raindrop.x),
+						convertYCoordinate(raindrop.y)
+					);
+					
+					// Upload size
+					gl.uniform1f(
+						uRaindropSize,
+						raindrop.size
+					);
+					
+					gl.drawArrays(gl.POINTS,0,1);
+				}
+				
+				//
+				requestAnimationFrame(loop);
+			}
+			
+			// This gets called when the page finishes loading
+			onload = function() {
+				// Get the canvas
+				canvas = document.getElementById("canvas");
+				canvas.width = canvasWidth;
+				canvas.height = canvasHeight;
+				
+				// Don't forget the webgl context!
+				gl = canvas.getContext("webgl");
+				
+				// Create our program, it's made up of two smaller programs.
+				// One processes verticies (one whole set of attributes) & one that decides the colour of each pixel
+				// These smaller programs need to be created, compiled then attached to the main program
+				
+				// modern Javascript has a nice feature called string templates, if we use `` instead of "" we can
+				// write strings that can have multiple lines!
+				backgroundProgram = createProgram(
+					` // Vertex Shader
+						precision lowp float;
+						
+						// These values are filled from our buffer
+						attribute vec2 aPosition;
+						attribute vec2 aUV;
+						
+						// Anything passed to this variable gets interpolated across any
+						// pixels inside our triangle
+						varying vec2 vUV;
+						
+						void main() {
+							vUV = aUV;
+							gl_Position = vec4(aPosition,0.0,1.0);
+						}
+						
+					`,` // Fragment shader
+						precision lowp float;
+						
+						// Freshly interpolated value from our vertex shader
+						varying vec2 vUV;
+						
+						// A uniform is a variable shared between webgl & javascript
+						// A sampler2D is a special datatype we use with texture2D
+						// to get a single pixel from the texture that's currently
+						// attached to TEXTURE_2D
+						uniform sampler2D uTexture;
+						
+						void main() {
+							gl_FragColor = texture2D(uTexture,vUV);
+						}
+					`
+				);
+				
+				raindropProgram = createProgram(
+					` // Vertex shader
+						precision lowp float;
+						
+						attribute vec2 aPosition;
+						
+						uniform vec2 uRaindropPosition;
+						uniform float uRaindropSize;
+						
+						void main() {
+							gl_PointSize = uRaindropSize;
+							gl_Position = vec4(uRaindropPosition + aPosition,0.0,1.0);
+						}
+					`,` // Fragment shader
+						precision lowp float;
+						
+						uniform sampler2D uTexture;
+						
+						void main() {
+							gl_FragColor = texture2D(uTexture,gl_PointCoord);
+							
+							// Discard the pixel if it has no alpha
+							if (gl_FragColor.a == 0.0) {
+								discard;
+							}
+						}
+					`
+				);
+				
+				// Get the 'location' of uniform variables in our raindrop program
+				// These will be used later to upload new uniform values to the gpu
+				uRaindropPosition = gl.getUniformLocation(raindropProgram,"uRaindropPosition");
+				uRaindropSize = gl.getUniformLocation(raindropProgram,"uRaindropSize");
+				
+				/*
+					Create and upload an array of data to the GPU,
+					each line contains all the attribute that make up one
+					vertex, here it's an x y coorinate for the position on the screen
+					followed by another x y coordinate for the position of the texture that
+					should be displayed at that corner (coordinates for textures are normally called UVs U = x, V = y)
+					
+					Below is a list of verticies that make up two triangles that forms a rectangle that covers the whole screen,
+					triangles in WebGL should go in counter clockwise order
+				*/
+				backgroundBuffer = createBuffer([
+					// X    Y	  U   V
+					-1.0, 1.0,	0.0,0.0, // Top left
+					-1.0,-1.0,	0.0,1.0, // Bottom left
+					 1.0, 1.0,	1.0,0.0, // Top right
+					 
+					 1.0, 1.0,	1.0,0.0, // Top right
+					-1.0,-1.0,	0.0,1.0, // Top left
+					 1.0,-1.0,	1.0,1.0  // Bottom right
+				]);
+				
+				// Create & upload textures
+				backgroundTexture = createTexture(images.background);
+				raindropTexture = createTexture(images.raindrop);
+				
+				// Set clearcolour, when we want an empty canvas
+				//            R   G   B   A
+				gl.clearColor(0.5,0.5,0.5,1.0);
+				
+				// Create some randomly placed raindrops to simulate
+				for (var i = 0; i < 10; ++i) {
+					raindrops.push(
+						new Raindrop(
+							Math.random() * canvasWidth,
+							Math.random() * canvasHeight,
+							25.0
+						)
+					);
+				}
+				
+				loop();
+			}
+			
+			// Called when the page is reloading or getting closed
+			onunload = function() {
+				gl.deleteProgram(backgroundProgram);
+				gl.deleteProgram(raindropProgram);
+				gl.deleteBuffer(backgroundBuffer);
+				gl.deleteTexture(backgroundTexture);
+				gl.deleteTexture(raindropTexture);
+			}
+			
+		}();
+		
+		</script>
+	</body>
+</html>
