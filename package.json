@@ -16,7 +16,6 @@
   
   "dependencies": {
     "@apache-arrow/es5-esm": "^13.0.0",
-    "@pirireis/webglobe": "5.0.12",
     "breathejs": "^0.2.1",
     "moment": "^2.29.4"
   }
